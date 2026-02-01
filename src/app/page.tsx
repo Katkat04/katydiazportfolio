@@ -1,11 +1,13 @@
 import Greetings from "../components/ui/Greetings";
-import Hero from "../components/homepage/Hero";
+import AboutMe from "../components/homepage/AboutMe";
+import Projects from "../components/homepage/Projects";
 
 export default function Home() {
   return (
     <>
       <Greetings/>
-      <Hero/>
+      <AboutMe/>
+      <Projects/>
     </>
   );
 }

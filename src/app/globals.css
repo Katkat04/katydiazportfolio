@@ -30,3 +30,53 @@ body {
   fill: transparent;
   stroke: transparent;
 }
+
+.pixel-btn {
+  display: inline-block;
+  text-decoration: none;
+
+  color: #ffffff;
+  background-color: #1956de;
+  padding: 10px 40px;
+  margin: 10px;
+  font-size: 14px;
+  border: 0;
+
+  box-shadow:
+    0px 5px black,
+    0px -5px black,
+    5px 0px black,
+    -5px 0px black,
+    0px 10px #00000038,
+    5px 5px #00000038,
+    -5px 5px #00000038,
+    inset 0px 5px #ffffff36;
+
+  cursor: pointer;
+}
+
+.pixel-btn:active {
+  transform: translateY(5px);
+  box-shadow:
+    0px 5px black,
+    0px -5px black,
+    5px 0px black,
+    -5px 0px black,
+    inset 0px 5px #00000038;
+}
+.project-card {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+
+  background: #000000;
+  box-shadow:
+    0px 4px white,
+    0px -4px white,
+    4px 0px white,
+    -4px 0px white,
+    0px 8px #00000038,
+    4px 4px #00000038,
+    -4px 4px #00000038;
+}

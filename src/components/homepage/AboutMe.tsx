@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Clouds from "./CloudsCarousel";
-export default function Hero() {
+import Link from "next/link";
+
+export default function AboutMe() {
   return (
     <section className="relative bg-[#de489e]">
       <div>
@@ -15,6 +17,9 @@ export default function Hero() {
             <span>Hi there!</span>
             <span>I’m Katy Diaz — a frontend developer who builds modern, responsive interfaces and brings ideas to life through code.</span>
           </div>
+          <Link href="/about" className="pixel-btn inline-block px-6 py-3 text-white font-bold uppercase">
+            more about me
+          </Link>
         </div>
       </div>
     </section>
