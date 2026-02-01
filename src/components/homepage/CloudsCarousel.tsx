@@ -48,13 +48,30 @@ export default function Clouds() {
   const [isPaused, setIsPaused] = useState(false);
   const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(performance.now());
+  const [isMobile, setIsMobile] = useState(false);
 
-  const spacing = 120;
-  const itemWidth = 120;
+  const spacing = isMobile ? 40 : 120;
+  const itemWidth = isMobile ? 80 : 120;
   const totalItemWidth = itemWidth + spacing;
   const totalWidth = duplicatedBrands.length * totalItemWidth;
 
-  const speed = 30; // px por segundo
+  const speed = isMobile ? 15 : 25;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleChange = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
 
   useEffect(() => {
     const animate = () => {
@@ -66,7 +83,6 @@ export default function Clouds() {
         setTranslateX(prev => {
           const next = prev - (speed * deltaTime) / 1000;
 
-          // loop infinito
           if (Math.abs(next) >= totalWidth / 3) {
             return 0;
           }
@@ -89,33 +105,24 @@ export default function Clouds() {
 
   return (
     <section className="flex flex-col items-center gap-8 md:pt-10">
-      <div
-        className="w-full overflow-hidden"
+      <div className="w-full overflow-hidden"
         onMouseLeave={() => {
           setIsPaused(false);
           lastTimeRef.current = performance.now();
         }}
       >
-        <div
-          className="flex"
-          style={{ transform: `translateX(${translateX}px)`, width: totalWidth, gap: spacing,}}>
+        <div className="flex" style={{ transform: `translateX(${translateX}px)`, width: totalWidth, gap: spacing,}}>
             {duplicatedBrands.map((cloud, idx) => (
-            <div key={`${cloud.id}-${idx}`} className="flex-shrink-0 flex  justify-center" style={{ width: cloud.width }}>
-                <div
-                className="relative"
-                style={{
-                    width: cloud.width,
-                    height: cloud.height,
-                }}
-                >
-                <Image
-                    src={cloud.imagen.url}
-                    alt={cloud.imagen.alternativeText}
-                    fill
-                    className="object-contain"
-                />
-                </div>
-            </div>
+              <div key={`${cloud.id}-${idx}`} className="flex-shrink-0 flex  justify-center" style={{ width: cloud.width }}>
+                  <div className="relative" style={{width: cloud.width, height: cloud.height,}}>
+                  <Image
+                      src={cloud.imagen.url}
+                      alt={cloud.imagen.alternativeText}
+                      fill
+                      className="object-contain"
+                  />
+                  </div>
+              </div>
             ))}
 
         </div>

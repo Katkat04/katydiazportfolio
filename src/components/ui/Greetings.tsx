@@ -86,7 +86,7 @@ export default function Greetings() {
     <section  ref={containerRef}  className="relative w-full h-screen overflow-hidden bg-black">
       <div className="absolute inset-0 bg-[url('/fondohero.jpg')] bg-cover bg-center" />
 
-      <div className="absolute top-[430] h-[500px] inset-0 flex items-center justify-center z-20">
+      <div className="absolute top-[200] h-[500px] inset-0 flex items-center justify-center z-20">
         <video
           ref={videoRef}
           src="/supa2.webm"

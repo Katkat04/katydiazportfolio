@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Pixelify_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/ui/Footer";
-import Greetings from "../components/ui/Greetings";
-import localFont from "next/font/local";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,15 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const fearRobot = localFont({
-  src: [
-    {
-      path: "../../public/fonts/FearRobot-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-fear-robot",
+const pixelify = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-pixelify",
 });
 
 export const metadata: Metadata = {
@@ -34,10 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode;}>) {
   return (
     <html lang="en">
-      <body
-        className={`${fearRobot.variable} antialiased`}
-      >
-        <Greetings/>
+      <body className={`${pixelify.variable} antialiased`}>
         {children}
         <Footer/>
       </body>
