@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ProjectCard(){
     return(
-        <div className="flex flex-col project-card">
+        <div className="flex flex-col project-card w-full">
             <div className="flex flex-row justify-between">
                 <h2 className="text-[24px] leading-none">Ganaagro Yishaq</h2>
                 <svg width="24" height="24" viewBox="0 0 28 28">
@@ -19,7 +19,7 @@ export default function ProjectCard(){
                     <rect x="5" y="17" width="3" height="3" fill="currentColor"/>
                 </svg>
             </div>
-            <div className="relative w-[409px] h-[259px]">
+            <div className="relative h-[205px] px-4 pb-2">
                 <Image src="/pimage.png" alt="Project Image" fill className="object-cover" />
             </div>
         </div>
