@@ -45,7 +45,7 @@ export default function Greetings() {
           end: '+=50%',
           pin: true,
           scrub: 2,
-          markers: false
+          markers: false 
         }
       })
 

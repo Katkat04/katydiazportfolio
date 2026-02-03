@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Projects(){
     return(
-        <section className="relative bg-[#001133] text-white max-w-[1440px] px-8 py-10">
-            <div className="flex flex-col gap-4 items-center">
+        <section className="relative bg-[#FFD700] text-white w-full">
+            <div className="flex flex-col gap-4  max-w-[1440px] px-8 py-10 mx-auto items-center">
                 <div className="flex flex-row items-center justify-between w-full">
                     <h1 className="text-[40px]">Featured projects</h1>
                     <Link href="/projects" className="text-[24px] flex flex-row items-center gap-1 hover:text-[#858aeb]">
@@ -22,7 +22,7 @@ export default function Projects(){
                         </svg>
                     </Link>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 w-full md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <ProjectCard />
                     <ProjectCard />
                     <ProjectCard />
