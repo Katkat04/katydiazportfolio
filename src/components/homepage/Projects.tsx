@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Projects(){
     return(
-        <section className="relative bg-[#FFD700] text-white w-full">
+        <section className="relative bg-[#e4b779] text-white w-full">
             <div className="flex flex-col gap-4  max-w-[1440px] px-8 py-10 mx-auto items-center">
                 <div className="flex flex-row items-center justify-between w-full">
                     <h1 className="text-[40px]">Featured projects</h1>

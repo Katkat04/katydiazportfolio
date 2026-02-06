@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ProjectCard(){
     return(
-        <div className="flex flex-col project-card w-full">
+        <div className="flex flex-col project-card w-full md:hover:scale-105 transition-transform duration-300">
             <div className="flex flex-row justify-between">
                 <h2 className="text-[24px] leading-none">Ganaagro Yishaq</h2>
                 <svg width="24" height="24" viewBox="0 0 28 28">

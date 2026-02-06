@@ -5,8 +5,8 @@ import Projects from "../components/homepage/Projects";
 export default function Home() {
   return (
     <>
-      <Greetings/>
       <AboutMe/>
+      <Greetings/>
       <Projects/>
     </>
   );
