@@ -164,3 +164,11 @@ body {
     opacity: 1;
   }
 }
+@keyframes pixel-wipe {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+
+.pixel-reveal {
+  animation: pixel-wipe 0.8s steps(16, end) forwards;
+}
