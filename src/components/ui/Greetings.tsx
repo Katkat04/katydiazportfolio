@@ -19,7 +19,7 @@ const px: React.CSSProperties = { shapeRendering: 'crispEdges' }
 
 function BubbleRight({ text }: { text: string }) {
   return (
-    <svg width="280" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
+    <svg className="w-[180px] md:w-[280px]" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
       <rect style={px} x="126" y="26" width="420" height="110" fill="#000"/>
       <rect style={px} x="114" y="38" width="12" height="86" fill="#000"/>
       <rect style={px} x="546" y="38" width="12" height="86" fill="#000"/>
@@ -68,7 +68,7 @@ function BubbleRight({ text }: { text: string }) {
 
 function BubbleLeft({ text }: { text: string }) {
   return (
-    <svg width="280" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
+    <svg className="w-[180px] md:w-[280px]" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
       <rect style={px} x="134" y="26" width="420" height="110" fill="#000"/>
       <rect style={px} x="122" y="38" width="12" height="86" fill="#000"/>
       <rect style={px} x="554" y="38" width="12" height="86" fill="#000"/>
@@ -116,13 +116,13 @@ function BubbleLeft({ text }: { text: string }) {
 }
 
 const POSITIONS = [
-  { side: 'left',  topOffset: '-160px' }, // frase 0: izq, más arriba
-  { side: 'right', topOffset:  '-120px' }, // frase 1: der, un poco menos arriba
-  { side: 'left',  topOffset:  '-50px' }, // frase 2: izq, casi al centro
-  { side: 'right', topOffset:   '-40px' }, // frase 3: der, un poco abajo
+  { side: 'left',  topOffset: '-160px' },
+  { side: 'right', topOffset:  '-120px' },
+  { side: 'left',  topOffset:  '-50px' },
+  { side: 'right', topOffset:   '-40px' },
 ]
 
-const VIDEO_HALF = 40 
+const VIDEO_HALF = 0 
 const BUBBLE_W   = 220
 
 export default function Greetings() {
