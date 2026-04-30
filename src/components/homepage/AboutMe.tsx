@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function AboutMe() {
   return (
     <section className="relative  bg-gradient-to-b from-[#e4b779] via-[#7A6141] to-[#000000] ">
-      <div className="sticky top-0 h-screen lg:h-[528px] flex flex-col px-8 pb-10 items-center lg:flex-row-reverse lg:py-16 z-50 max-w-[1142px] md:mx-auto">
-        <div className="flex-1 relative w-[365px] h-[243px] md:w-[530px] md:h-[380px] lg:w-[769px] lg:h-[480px] z-[100]">
+      <div className="sticky top-0 h-fit lg:h-[528px] flex flex-col px-8 pb-10 items-center lg:flex-row-reverse lg:py-16 z-50 max-w-[1142px] md:mx-auto">
+        <div className="hidden md:block flex-1 relative w-[365px] h-[243px] md:w-[530px] md:h-[380px] lg:w-[769px] lg:h-[480px] z-[100]">
           <Image src="/katy.png" alt="Katy Diaz" fill className="object-contain z-[-10]" />
         </div>
         <div className="text-white text-[28px] md:text-[36px] flex-1 md:text-left whitespace-pre-line">
