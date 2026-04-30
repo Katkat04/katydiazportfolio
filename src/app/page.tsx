@@ -1,14 +1,14 @@
 import Greetings from "../components/ui/Greetings";
 import AboutMe from "../components/homepage/AboutMe";
 import Projects from "../components/homepage/Projects";
-import Clouds from "../components/homepage/CloudsCarousel";
+import TechnologicalCarousel from "../components/homepage/TechnologicalCarousel";
 
 export default function Home() {
   return (
     <>
       <Greetings/>
       <AboutMe/>
-      <Clouds/>
+      <TechnologicalCarousel/>
       <Projects/>
     </>
   );

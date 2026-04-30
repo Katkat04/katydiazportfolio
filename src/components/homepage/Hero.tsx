@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Clouds from "./CloudsCarousel";
+import Clouds from "./TechnologicalCarousel";
 export default function Hero() {
   return (
     <section className="relative bg-[#de489e]">
