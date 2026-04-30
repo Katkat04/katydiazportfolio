@@ -3,10 +3,20 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const clouds = [
+    {
+    id: 7,
+    imagen: {
+      url: "/logospixelados/next.webp",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
+    imageClassName: "invert",
+  },
   {
     id: 1,
     imagen: {
-      url: "/cloud4.png",
+      url: "/logospixelados/astro.png",
       alternativeText: "nube",
     },
     width: 175,
@@ -15,29 +25,83 @@ const clouds = [
   {
     id: 2,
     imagen: {
-      url: "/cloud8.png",
+      url: "/logospixelados/css.webp",
       alternativeText: "nube",
     },
-    width: 288,
-    height: 188,
+    width: 175,
+    height: 98,
   },
   {
     id: 3,
     imagen: {
-      url: "/cloud7.png",
+      url: "/logospixelados/gsap.webp",
       alternativeText: "nube",
     },
-    width: 249,
-    height: 150,
+    width: 175,
+    height: 98,
   },
   {
     id: 4,
     imagen: {
-      url: "/cloud1.png",
+      url: "/logospixelados/html.png",
       alternativeText: "nube",
     },
-    width: 267,
-    height: 181,
+    width: 175,
+    height: 98,
+  },
+  {
+    id: 5,
+    imagen: {
+      url: "/logospixelados/javascript.png",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
+  },
+  {
+    id: 6,
+    imagen: {
+      url: "/logospixelados/mui.png",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
+  },
+  {
+    id: 8,
+    imagen: {
+      url: "/logospixelados/nodejs.webp",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
+  },
+  {
+    id: 9,
+    imagen: {
+      url: "/logospixelados/react.png",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
+  },
+  {
+    id: 10,
+    imagen: {
+      url: "/logospixelados/tailwind.png",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
+  },
+  {
+    id: 11,
+    imagen: {
+      url: "/logospixelados/typescript.png",
+      alternativeText: "nube",
+    },
+    width: 175,
+    height: 98,
   },
 ];
 
@@ -50,8 +114,8 @@ export default function Clouds() {
   const lastTimeRef = useRef<number>(performance.now());
   const [isMobile, setIsMobile] = useState(false);
 
-  const spacing = isMobile ? 40 : 120;
-  const itemWidth = isMobile ? 80 : 120;
+  const spacing = isMobile ? 20 : 60;
+  const itemWidth = isMobile ? 40 : 60;
   const totalItemWidth = itemWidth + spacing;
   const totalWidth = duplicatedBrands.length * totalItemWidth;
 
@@ -104,7 +168,10 @@ export default function Clouds() {
   }, [isPaused, totalWidth]);
 
   return (
-    <section className="flex flex-col items-center gap-8 md:pt-10">
+    <section className="flex flex-col bg-[#000000] items-center gap-4 md:pt-10">
+      <div>
+        <h3 className="text-white">Technological stack</h3>
+      </div>
       <div className="w-full overflow-hidden"
         onMouseLeave={() => {
           setIsPaused(false);
@@ -119,7 +186,7 @@ export default function Clouds() {
                       src={cloud.imagen.url}
                       alt={cloud.imagen.alternativeText}
                       fill
-                      className="object-contain"
+                      className={`object-contain ${"imageClassName" in cloud ? cloud.imageClassName : ""}`}
                   />
                   </div>
               </div>

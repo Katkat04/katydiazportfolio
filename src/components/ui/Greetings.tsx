@@ -217,7 +217,7 @@ export default function Greetings() {
           <video
             ref={videoRef}
             src="/Completo.webm"
-            style={{ height: 200, width: 'auto', zIndex: 10, position: 'relative' }}
+            style={{ height: 160, width: 'auto', zIndex: 10, position: 'relative' }}
             muted
             playsInline
             preload="metadata"
