@@ -83,7 +83,7 @@ export default function TechnologicalCarousel() {
   return (
     <section className="flex flex-col bg-[#000000] items-center gap-4 md:gap-12 md:pt-14">
       <div className="flex justify-center">
-        <h3 className="text-white text-[28px] md:text-[40px]">Technological stack</h3>
+        <h3 className=" text-[28px] md:text-[40px] text-[#ffd509]">Technological stack</h3>
       </div>
       <div
         className="w-full overflow-hidden"
