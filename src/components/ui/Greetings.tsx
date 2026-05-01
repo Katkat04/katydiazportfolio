@@ -149,6 +149,12 @@ export default function Greetings() {
     const initAnimation = () => {
       const duration = video.duration || 5
 
+      // Desactivar scroll-behavior:smooth mientras GSAP inserta el spacer del pin.
+      // Sin esto, el ajuste de layout del pin se anima como smooth-scroll y parece
+      // un salto hacia AboutMe al cargar la página en móvil.
+      const html = document.documentElement
+      html.style.scrollBehavior = 'auto'
+
       animation = gsap.to(video, {
         scale: 2.1,
         y: 200,
@@ -176,7 +182,6 @@ export default function Greetings() {
         end: `+=${duration * 100}vh`,
         scrub: true,
         pin: pinWrapper,
-        anticipatePin: 1,
         onUpdate: (self) => {
           if (animation && video.duration) {
             animation.progress(self.progress)
@@ -187,16 +192,36 @@ export default function Greetings() {
           }
         },
       })
+
+      // Restaurar smooth scroll tras dos frames (cuando el pin ya está estabilizado)
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        html.style.scrollBehavior = ''
+      }))
+    }
+
+    // Flag para saber si ya se inicializó (evita doble init entre evento y fallback)
+    let initialized = false
+    const safeInit = () => {
+      if (initialized) return
+      initialized = true
+      initAnimation()
     }
 
     if (video.readyState >= 2) {
-      initAnimation()
+      safeInit()
     } else {
-      video.addEventListener('loadedmetadata', initAnimation, { once: true })
+      video.addEventListener('loadedmetadata', safeInit, { once: true })
+      // Inicializar en el siguiente tick sin esperar al video.
+      // Antes era 3000ms → GSAP creaba el pin tarde → smooth-scroll animaba
+      // el ajuste de layout como un salto visible hacia AbotMe en móvil.
+      const fallback = setTimeout(safeInit, 0)
+      const origCleanup = () => clearTimeout(fallback)
+      ;(video as HTMLVideoElement & { _gsapCleanup?: () => void })._gsapCleanup = origCleanup
     }
 
     return () => {
-      video?.removeEventListener('loadedmetadata', initAnimation)
+      video?.removeEventListener('loadedmetadata', safeInit)
+      ;(video as HTMLVideoElement & { _gsapCleanup?: () => void })._gsapCleanup?.()
       if (st)           { st.kill(true);       st = null }
       if (animation)    { animation.kill();    animation = null }
       if (textTimeline) { textTimeline.kill(); textTimeline = null }
@@ -213,14 +238,14 @@ export default function Greetings() {
 
         <div className="absolute inset-0 flex items-center justify-center">
 
-          {/* Video central */}
+          {/* Video central — webm para preservar transparencia (alpha) */}
           <video
             ref={videoRef}
-            src="/Completo.webm"
-            style={{ height: 160, width: 'auto', zIndex: 10, position: 'relative' }}
+            src="https://res.cloudinary.com/dvodvcoxo/video/upload/v1777662775/Completo_ogpahj.webm"
+            style={{ height: 160, width: 'auto', zIndex: 10, position: 'relative', backgroundColor: 'transparent' }}
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
           />
 
           {/* Los 4 bocadillos posicionados en cascada */}
