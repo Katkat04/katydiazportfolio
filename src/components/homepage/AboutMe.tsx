@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export default function AboutMe() {
   return (
-    <section id="about" className="relative  bg-[#000000] ">
-      <div className="sticky top-0 h-fit lg:h-[528px] flex flex-col px-8 pb-10 items-center lg:flex-row-reverse lg:py-16 z-50 max-w-[1142px] md:mx-auto">
+    <section id="about" className="relative  bg-[#000000]">
+      <div className="sticky top-0 h-fit lg:h-[528px] flex flex-col px-8 py-10 items-center lg:flex-row-reverse lg:py-16 z-50 max-w-[1142px] md:mx-auto">
         <div className="hidden md:block flex-1 relative w-[365px] h-[243px] md:w-[530px] md:h-[380px] lg:w-[769px] lg:h-[480px] z-[100]">
           <Image src="/katy.png" alt="Katy Diaz" fill className="object-contain z-[-10]" />
         </div>

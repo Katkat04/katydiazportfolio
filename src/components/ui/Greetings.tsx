@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -126,6 +126,7 @@ const VIDEO_HALF = 0
 const BUBBLE_W   = 220
 
 export default function Greetings() {
+  const [isIOS, setIsIOS] = useState(false)
   const videoRef      = useRef<HTMLVideoElement>(null)
   const containerRef  = useRef<HTMLDivElement>(null)
   const pinWrapperRef = useRef<HTMLDivElement>(null)
@@ -133,6 +134,10 @@ export default function Greetings() {
   const b1 = useRef<HTMLDivElement>(null)
   const b2 = useRef<HTMLDivElement>(null)
   const b3 = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent))
+  }, [])
 
   useEffect(() => {
     const video      = videoRef.current
@@ -147,11 +152,8 @@ export default function Greetings() {
     let textTimeline: gsap.core.Timeline | null = null
 
     const initAnimation = () => {
-      const duration = video.duration || 5
+      const duration = 7.2
 
-      // Desactivar scroll-behavior:smooth mientras GSAP inserta el spacer del pin.
-      // Sin esto, el ajuste de layout del pin se anima como smooth-scroll y parece
-      // un salto hacia AboutMe al cargar la página en móvil.
       const html = document.documentElement
       html.style.scrollBehavior = 'auto'
 
@@ -176,6 +178,8 @@ export default function Greetings() {
           )
       })
 
+      video.play().then(() => video.pause()).catch(() => {})
+
       st = ScrollTrigger.create({
         trigger: pinWrapper,
         start: 'top top',
@@ -183,45 +187,22 @@ export default function Greetings() {
         scrub: true,
         pin: pinWrapper,
         onUpdate: (self) => {
-          if (animation && video.duration) {
-            animation.progress(self.progress)
+          if (animation) animation.progress(self.progress)
+          if (textTimeline) textTimeline.progress(self.progress)
+          if (video.duration) {
             video.currentTime = video.duration * self.progress
-          }
-          if (textTimeline) {
-            textTimeline.progress(self.progress)
           }
         },
       })
 
-      // Restaurar smooth scroll tras dos frames (cuando el pin ya está estabilizado)
       requestAnimationFrame(() => requestAnimationFrame(() => {
         html.style.scrollBehavior = ''
       }))
     }
 
-    // Flag para saber si ya se inicializó (evita doble init entre evento y fallback)
-    let initialized = false
-    const safeInit = () => {
-      if (initialized) return
-      initialized = true
-      initAnimation()
-    }
-
-    if (video.readyState >= 2) {
-      safeInit()
-    } else {
-      video.addEventListener('loadedmetadata', safeInit, { once: true })
-      // Inicializar en el siguiente tick sin esperar al video.
-      // Antes era 3000ms → GSAP creaba el pin tarde → smooth-scroll animaba
-      // el ajuste de layout como un salto visible hacia AbotMe en móvil.
-      const fallback = setTimeout(safeInit, 0)
-      const origCleanup = () => clearTimeout(fallback)
-      ;(video as HTMLVideoElement & { _gsapCleanup?: () => void })._gsapCleanup = origCleanup
-    }
+    initAnimation()
 
     return () => {
-      video?.removeEventListener('loadedmetadata', safeInit)
-      ;(video as HTMLVideoElement & { _gsapCleanup?: () => void })._gsapCleanup?.()
       if (st)           { st.kill(true);       st = null }
       if (animation)    { animation.kill();    animation = null }
       if (textTimeline) { textTimeline.kill(); textTimeline = null }
@@ -238,11 +219,19 @@ export default function Greetings() {
 
         <div className="absolute inset-0 flex items-center justify-center">
 
-          {/* Video central — webm para preservar transparencia (alpha) */}
           <video
             ref={videoRef}
             src="https://res.cloudinary.com/dvodvcoxo/video/upload/v1777662775/Completo_ogpahj.webm"
-            style={{ height: 160, width: 'auto', zIndex: 10, position: 'relative', backgroundColor: 'transparent' }}
+            style={{
+              height: 160,
+              width: 'auto',
+              zIndex: 10,
+              position: 'relative',
+              background: 'transparent',
+              // iOS Safari strips VP9 alpha → transparent areas render as white.
+              // multiply: white × dark-bg = dark-bg (appears transparent). Only iOS needs this.
+              mixBlendMode: isIOS ? 'multiply' : 'normal',
+            }}
             muted
             playsInline
             preload="auto"
