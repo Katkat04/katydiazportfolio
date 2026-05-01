@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Pixelify_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Ending from "../components/ui/Ending";
 import Header from "../components/ui/Header";
+import Footer from "../components/ui/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +31,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
       <body className={`${pixelify.variable} antialiased`}>
         <Header />
         {children}
-        <Ending/>
+        <Footer/>
       </body>
     </html>
   );

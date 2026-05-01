@@ -35,7 +35,7 @@ export default function TechnologicalCarousel() {
   const spacing = isMobile ? 24 : 60;
   const totalItemWidth = imgWidth + spacing;
   const totalWidth = duplicatedBrands.length * totalItemWidth;
-  const speed = isMobile ? 15 : 25;
+const speed = isMobile ? 30 : 50;
 
   // Refs para que el useEffect de animación no dependa de estos valores
   const speedRef = useRef(speed);

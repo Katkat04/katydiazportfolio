@@ -20,7 +20,7 @@ const featuredProjects = [
 
 export default function Projects(){
     return(
-        <section className="relative bg-[#000000] text-white w-full md:pt-14">
+        <section id="projects" className="relative bg-[#000000] text-white w-full md:pt-14">
             <div className="flex flex-col gap-4 md:gap-8   max-w-[1440px] px-8 py-10 mx-auto items-center">
                 <div className="flex flex-row items-center justify-center w-full">
                     <h1 className="text-[28px] md:text-[40px] text-[#ffd509]">Featured projects</h1>
