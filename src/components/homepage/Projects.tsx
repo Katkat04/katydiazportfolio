@@ -1,4 +1,4 @@
-import ProjectCard from "../shared/ProjectCard";
+import ProjectCard from "./ProjectCard";
 
 const featuredProjects = [
     {
