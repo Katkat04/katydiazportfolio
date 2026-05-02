@@ -5,7 +5,7 @@ import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 import JsonLd from "../components/ui/JsonLd";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://katydiazbeltran.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://katydiazbeltran.com";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
       "Desarrolladora frontend freelance en Barranquilla, Colombia. React, Next.js, TypeScript y animaciones web. Disponible remoto.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/metaimage.png",
         width: 1200,
         height: 630,
         alt: "Katy Díaz Beltrán — Frontend Developer Freelance Barranquilla Colombia",
