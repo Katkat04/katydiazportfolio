@@ -79,7 +79,7 @@ export const metadata: Metadata = {
       "Desarrolladora frontend freelance en Barranquilla, Colombia. React, Next.js, TypeScript y animaciones web. Disponible remoto.",
     images: [
       {
-        url: "/metaimage.png",
+        url: "https://res.cloudinary.com/dvodvcoxo/image/upload/v1777701224/metaimage_hppaqt.png",
         width: 1200,
         height: 630,
         alt: "Katy Díaz Beltrán — Frontend Developer Freelance Barranquilla Colombia",
