@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 import JsonLd from "../components/ui/JsonLd";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://katydiazbeltran.com";
 
@@ -113,6 +114,7 @@ export default function RootLayout({ children}: Readonly<{ children: React.React
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-FT393F8QK6" />
     </html>
   );
 }
