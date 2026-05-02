@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Pixelify_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 import JsonLd from "../components/ui/JsonLd";
 
@@ -103,12 +104,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children}: Readonly<{ children: React.ReactNode;}>) {
+export default function RootLayout({ children}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`${pixelify.variable} antialiased`}>
+        <JsonLd siteUrl={SITE_URL} />
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
