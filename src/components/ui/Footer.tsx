@@ -6,6 +6,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Katy Díaz Beltrán.
         </p>
         <p> Made with so much love.</p>
+        {/*
         <nav>
             <ul className="flex gap-4 justify-center md:justify-end">
                 <li>
@@ -19,6 +20,7 @@ export default function Footer() {
                 </li>
             </ul>
         </nav>
+        */}
       </div>
     </footer>
   );
