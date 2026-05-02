@@ -22,7 +22,7 @@ const pixelify = Pixelify_Sans({
 
 export const metadata: Metadata = {
   title: "Katy Diaz",
-  description: "Portfolio of Katy Diaz",
+  description: "Portfolio Katy Diaz",
 };
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode;}>) {

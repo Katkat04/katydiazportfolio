@@ -3,12 +3,12 @@ import AboutMe from "../components/homepage/AboutMe";
 import Projects from "../components/homepage/Projects";
 import TechnologicalCarousel from "../components/homepage/TechnologicalCarousel";
 import Ending from "../components/ui/Ending";
-import HeroAnimation from "../components/ui/HeroAnimation";
+import Preloader from "../components/ui/Preloader";
 
 export default function Home() {
   return (
     <>
-      <HeroAnimation/>
+      <Preloader/>
       <Greetings/>
       <AboutMe/>
       <TechnologicalCarousel/>
