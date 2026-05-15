@@ -6,11 +6,7 @@ import Footer from "../components/ui/Footer";
 import JsonLd from "../components/ui/JsonLd";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from "@vercel/analytics/next"
-import Clarity from '@microsoft/clarity';
-
-const projectId = "wr8nenq7yz"
-
-Clarity.init(projectId);
+import ClarityInit from "../components/ui/Clarity";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://katydiazbeltran.com";
 
@@ -115,6 +111,7 @@ export default function RootLayout({ children}: Readonly<{ children: React.React
   return (
     <html lang="es">
       <body className={`${pixelify.variable} antialiased`}>
+        <ClarityInit />
         <JsonLd siteUrl={SITE_URL} />
         <Header />
         {children}
